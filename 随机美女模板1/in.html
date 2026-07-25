@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{city}{sitename} - 老司机最爱的黑丝/白丝美女写真_手机/电脑美女壁纸</title>
+<meta name="keywords" content="{city}{sitename},老司机最爱,{city}黑丝美女,{city}白丝美女,{city}美女写真,{city}手机美女壁纸,{city}电脑美女壁纸" />
+<meta name="description" content="{city}{sitename}({siteurl})老司机的最爱，{city}JK制服少女、{city}黑丝美女写真、{city}白丝美女写真、{city}手机美女壁纸、{city}电脑美女壁纸、{city}二次元动漫…应有尽有，让你大饱眼福。" />
+<link rel="stylesheet" href="{mulu}static/style.css" />
+<style>
+    .site-footer {
+        background-color: #1a1a1a;
+        color: #999;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 40px;
+        border-top: 1px solid #333;
+    }
+    .site-footer p {
+        margin: 5px 0;
+    }
+    .site-footer a {
+        color: #999;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .site-footer a:hover {
+        color: #fff;
+    }
+    .cr-text {
+        color: #ccc;
+        font-weight: bold;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+</style>
+</head>
+<body>
+<h1 style="text-align:center;">{city}{sitename}</h1>
+<h2 style="text-align:center; line-height2em; margin:10px auto; max-width:1300px;">{city}{sitename}是一个专业的美女图库网站，这里有老司机们最爱看的各种美图，包含但不限于：黑丝美女写真图片、白丝美女写真照、JK制服少女美图、手机美女壁纸、电脑美女壁纸、二次元动漫壁纸等，所有图片均来自互联网，动态加载（每一次刷新看到的内容都不相同），所以看到喜欢的图片记得及时保存哦~</h2>
+<div class="desktop-layout">
+<div class="sidebar">
+<h2 class="sidebar-title">全部分类</h2>
+<div class="cat-item active" data-api="https://v2.xxapi.cn/api/heisi?return=302" data-name="黑丝">🖤 黑丝</div>
+<div class="cat-item" data-api="https://v2.xxapi.cn/api/baisi?return=302" data-name="白丝">🤍 白丝</div>
+<div class="cat-item" data-api="https://api.528sq.cn/api/jk.php?return=302" data-name="JK制服">🎀 JK制服</div>
+<div class="cat-item" data-api="https://v2.xxapi.cn/api/wapmeinvpic?return=302" data-name="手机壁纸">📱 手机壁纸</div>
+<div class="cat-item" data-api="https://api.6045833.xyz/meinv?return=302" data-name="电脑壁纸">🖥️ 电脑壁纸</div>
+<div class="cat-item" data-api="https://www.dmoe.cc/random.php?return=302" data-name="二次元">🛍️ 二次元</div>
+</div>
+
+<div class="mobile-cats">
+<div class="mobile-grid">
+<div class="mobile-cat active" data-api="https://v2.xxapi.cn/api/heisi?return=302" data-name="黑丝">🖤 黑丝</div>
+<div class="mobile-cat" data-api="https://v2.xxapi.cn/api/baisi?return=302" data-name="白丝">🤍 白丝</div>
+<div class="mobile-cat active" data-api="https://api.528sq.cn/api/jk.php?return=302" data-name="JK制服">🎀 JK制服</div>
+<div class="mobile-cat" data-api="https://v2.xxapi.cn/api/wapmeinvpic?return=302" data-name="手机壁纸">📱 手机壁纸</div>
+<div class="mobile-cat" data-api="https://api.6045833.xyz/meinv?return=302" data-name="电脑壁纸">🖥️ 电脑壁纸</div>
+<div class="mobile-cat" data-api="https://www.dmoe.cc/random.php?return=302" data-name="二次元">🛍️ 二次元</div>
+</div>
+</div>
+
+<nav style="position:fixed; width:100vw; height:18vh; bottom:188vh; left:0; overflow:hidden;"><a href='{mulu}list/1.html'>最新话题</a> | <a href='{mulu}list/2.html'>热点追踪</a> | <a href='{mulu}list/3.html'>网络教程</a> | <a href='{mulu}list/4.html'>权威观点</a> | <a href='{mulu}list/5.html'>资讯导读</a> | <a href='{mulu}list/6.html'>新闻看点</a></nav>
+
+<div class="loading" id="loading">图片列表加载中...</div>
+<div class="wall-grid" id="grid"></div>
+<div class="preview" id="preview"><span class="close">×</span><img id="prevImg" loading="lazy"></div>
+<div class="newslist" style="line-height:2em; text-align:center;">
+{innews}
+{inreso}
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>Copyright &copy; 2026 {city}{sitename}(<a href="//{siteurl}" rel="index">{siteurl}</a>) All Rights Reserved.</p>
+        <p>本站资源均来自互联网，仅供学习交流使用，请勿用于商业用途。</p>
+        <p><a href="/">网站首页</a> <a href="{mulu}sitemap.xml">网站地图</a> <a href="{mulu}sitemap.txt">Sitemap</a></p>
+        <p><b>城市分站：</b>{citylist}</p>
+        <p>{inlink}</p>
+    </div>
+</footer>
+<script src="{mulu}static/app.js" defer></script>
+</body>
+</html>
