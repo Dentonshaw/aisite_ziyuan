@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{city}美女街拍_随机{city}美女写真-{city}{sitename}</title>
+    <meta name="keywords" content="美女,{city}美女,{city}美女街拍,{city}美女写真" />
+	<meta name="description" content="{sitename}({siteurl})是一个专业的{city}美女写真网站，网站首页随机展示{city}街拍美女，点击切换按钮可以更换图片，喜欢的图片可以收藏、下载或分享。" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="{mulu}static/css/style.css" rel="stylesheet">
+</head>
+<body data-theme="dark">
+    <div class="particles" id="particles"></div>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-images"></i> {city}{sitename}
+        </div>
+        <div class="index-img" style="position:fixed; height:20vh; top:0; left:168vw; overflow:hidden;"><a href="/" rel="index"><img referrerPolicy="no-referrer" src="https://tse4-mm.bing.com/th?q={city}{sitename}" alt="{city}{sitename}" /></a></div>
+        <nav style="position:fixed; width:100vw; height:18vh; bottom:188vh; left:0; overflow:hidden;"><a href='/'>网站首页</a> | <a href='{mulu}list/1.html'>最新话题</a> | <a href='{mulu}list/2.html'>热点追踪</a> | <a href='{mulu}list/3.html'>网络教程</a> | <a href='{mulu}list/4.html'>权威观点</a> | <a href='{mulu}list/5.html'>资讯导读</a> | <a href='{mulu}list/6.html'>新闻看点</a></nav>
+        <div class="nav-actions">
+            <div class="theme-toggle-btn" onclick="toggleTheme()" title="切换主题"></div>
+        </div>
+    </nav>
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 标题区域 -->
+        <div class="hero-section">
+            <h1 class="hero-title">随机美女图片</h1>
+            <p class="hero-subtitle">发现每一刻的美好，感受视觉的极致体验</p>
+            <p class="hero-subtitle">{city}{sitename}推荐服务：<a href="https://www.urkeji.com" target="_blank">网站制作</a>、<a href="https://baiduseo.mikecrm.com/1dGJnNG" target="_blank">网站优化</a>、<a href="https://idc.urkeji.com" target="_blank">虚拟主机</a></p>
+        </div>
+        <!-- 主内容 -->
+        <div class="main-content">
+            <!-- 图片卡片 -->
+            <div class="image-card">
+                <div class="image-container" onclick="enterFullscreen()">
+                    <img id="randomImage" src="" alt="随机美女图片" style="display: none;">
+                    <div class="loading" id="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <div>正在加载精美图片...</div>
+                    </div>
+                    
+                    <div class="image-overlay">
+                        <button class="overlay-btn" onclick="event.stopPropagation(); toggleFavorite()" title="收藏">
+                            <i id="favoriteIcon" class="far fa-heart"></i>
+                        </button>
+                        <button class="overlay-btn" onclick="event.stopPropagation(); showSharePanel()" title="分享">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        <button class="overlay-btn" onclick="event.stopPropagation(); enterFullscreen()" title="全屏">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button class="btn" onclick="loadRandomImage()" id="loadBtn">
+                        <i class="fas fa-dice"></i>
+                        <span>换一张</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="downloadImage()" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                        <span>下载</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="toggleFavorite()" id="favoriteBtn">
+                        <i class="far fa-heart"></i>
+                        <span>收藏</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="showSharePanel()" id="shareBtn">
+                        <i class="fas fa-share-alt"></i>
+                        <span>分享</span>
+                    </button>
+                </div>
+                
+                <div class="error-msg" id="errorMsg">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    图片加载失败，请检查网络连接或点【换一张】按钮重试
+                </div>
+            </div>
+            <!-- 侧边栏 -->
+            <div class="sidebar">
+                <!-- 统计数据 -->
+                <div class="sidebar-card">
+                    <div class="sidebar-title">
+                        <i class="fas fa-chart-bar"></i>
+                        数据统计
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" id="viewCount">0</div>
+                            <div class="stat-label">浏览次数</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="favoriteCount">0</div>
+                            <div class="stat-label">收藏数量</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="downloadCount">0</div>
+                            <div class="stat-label">下载次数</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="shareCount">0</div>
+                            <div class="stat-label">分享次数</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 图片质量 -->
+                <div class="sidebar-card">
+                    <div class="sidebar-title">
+                        <i class="fas fa-cog"></i>
+                        图片质量
+                    </div>
+                    <div class="quality-selector">
+                        <button class="quality-btn active" data-quality="original">原图</button>
+                        <button class="quality-btn" data-quality="high">高清</button>
+                        <button class="quality-btn" data-quality="medium">标准</button>
+                    </div>
+                </div>
+                <!-- 我的收藏 -->
+                <div class="sidebar-card">
+                    <div class="sidebar-title">
+                        <i class="fas fa-heart"></i>
+                        我的收藏
+                    </div>
+                    <div class="content-list" id="favoritesList">
+                        <div style="text-align: center; color: var(--text-muted); padding: 30px 20px;">
+                            <i class="far fa-heart" style="font-size: 24px; margin-bottom: 10px; display: block;"></i>
+                            暂无收藏
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 浏览历史 -->
+                <div class="sidebar-card">
+                    <div class="sidebar-title">
+                        <i class="fas fa-history"></i>
+                        浏览历史
+                    </div>
+                    <div class="content-list" id="historyList">
+                        <div style="text-align: center; color: var(--text-muted); padding: 30px 20px;">
+                            <i class="fas fa-history" style="font-size: 24px; margin-bottom: 10px; display: block;"></i>
+                            暂无历史
+                        </div>
+                    </div>
+                    <div>{innews}</div>
+                    <div>{inreso}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 全屏模式 -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay" onclick="exitFullscreen()">
+        <img class="fullscreen-image" id="fullscreenImage" src="" alt="全屏图片">
+        <button class="fullscreen-close" onclick="exitFullscreen()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <!-- 分享面板 -->
+    <div class="share-panel" id="sharePanel">
+        <h3 class="share-title">分享到</h3>
+        <div class="share-options">
+            <button class="share-btn weibo" onclick="shareToWeibo()">
+                <i class="fab fa-weibo"></i>
+                微博
+            </button>
+            <button class="share-btn weixin" onclick="shareToWeixin()">
+                <i class="fab fa-weixin"></i>
+                微信
+            </button>
+            <button class="share-btn qq" onclick="shareToQQ()">
+                <i class="fab fa-qq"></i>
+                QQ
+            </button>
+            <button class="share-btn link" onclick="copyLink()">
+                <i class="fas fa-link"></i>
+                复制链接
+            </button>
+        </div>
+        <button class="cancel-btn" onclick="hideSharePanel()">取消</button>
+    </div>
+    <footer style="width:100%; margin:30px 0 0 0; text-align:center">
+        <div style="width:100%; max-width:1200px; margin:10px auto;">
+			<div style="text-align:center">
+                <a href="//{siteurl}" target="_blank">{sitename}</a> <a href="{mulu}sitemap.xml" target="_blank">XML索引</a> <a href="{mulu}sitemap.txt" target="_blank">TXT地图</a> <a href="javascript:void(alert('加微信：seo5951 或QQ：853616368'))">联系站长</a>
+            </div>
+        </div>
+        <div style="width:100%; max-width:1200px; margin:10px auto;">
+            <div style="text-align:center">{sitename}所有美女图片均来自API接口提供，图片最终版权归原作者所有！ <a href="//{siteurl}" target="_blank">{city}{sitename}</a> 为网站提供技术支持</div>
+        </div>
+        <div style="width:100%; max-width:1200px; margin:10px auto;"><p><b>城市分站：</b>{citylist}</p></div>
+        <div style="width:100%; max-width:1200px; margin:10px auto;"><p>{inlink}</p></div>
+    </footer>
+    <script src="{mulu}static/js/script.js"></script>
+</body>
+</html>
