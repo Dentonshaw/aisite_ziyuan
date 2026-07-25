@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<title>{city}{sitename} - 让每一次搜索都有收获！</title>
+<meta name="description" content="{sitename}({siteurl})提供专业的{city}精准搜索服务，{city}{sitename}让商业搜索、服务搜索、产品搜索、娱乐搜索、新闻搜索、影视搜索全部回归到搜索的本质，让每一次搜索都有收获！" />
+<meta name="keywords" content="{city}{sitename},{city}搜索,{city}搜索引擎" />
+<link rel="shortcut icon" href="{mulu}favicon.ico" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="{mulu}skin/style.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav style="position:fixed; width:100vw; bottom:188vh; left:0; overflow:hidden; text-align:center;"><a href='/'>网站首页</a> | <a href='{mulu}list/1.html'>最新话题</a> | <a href='{mulu}list/2.html'>热点追踪</a> | <a href='{mulu}list/3.html'>网络教程</a> | <a href='{mulu}list/4.html'>权威观点</a> | <a href='{mulu}list/5.html'>资讯导读</a> | <a href='{mulu}list/6.html'>新闻看点</a></nav>
+        
+        <header class="header">
+            <h1 class="logo">千度搜索</h1>
+            <p class="slogan">千度一下，你知道的更多!</p>
+            <p class="logo-hint">点击搜索框前边的图标切换不同的搜索模式</p>
+        </header>
+        
+        <div class="index-img" style="position:fixed; height:20vh; text-align:center; top:150vh; left:0;"><a href="/" rel="index"><img referrerPolicy="no-referrer" src="https://tse5-mm.bing.com/th?q={city}{sitename}" alt="{city}{sitename}" /></a></div>
+        
+        <main class="search-section">
+            <div class="search-container">
+                <div class="search-engine-selector">
+                    <button class="engine-toggle" id="engineToggle">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                    <div class="engine-dropdown" id="engineDropdown">
+                        <div class="engine-option active" data-engine="video" data-url="/?s=">
+                            <i class="fas fa-video"></i> 影视搜索
+                        </div>
+                        <div class="engine-option" data-engine="web" data-url="https://app-6un3zdi3igox.appmiaoda.com/search?query=">
+                            <i class="fas fa-search"></i> 网页搜索
+                        </div>
+                        <div class="engine-option" data-engine="pic" data-url="https://app-6un3zdi3igox.appmiaoda.com/pic?query=">
+                            <i class="fas fa-image"></i> 图片搜索
+                        </div>
+                        <div class="engine-option" data-engine="shop" data-url="https://roldt.yhzu.cn/?r=/l&kw=">
+                            <i class="fas fa-shop"></i> 商品搜索
+                        </div>
+                    </div>
+                </div>
+                
+                <input type="text" class="search-box" id="searchInput" autocomplete="off">
+                <div class="search-placeholder" id="searchPlaceholder">请输入你要搜索的关键词</div>
+                
+                <button class="search-btn" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+                
+                <div class="suggestions" id="suggestions"></div>
+            </div>
+            <!-- 热搜板块容器 -->
+            <div id="hot-search-container">
+            <div class="hot-search-tabs">
+                <div class="tab-item active" data-tab="all">全网热搜</div>
+                <div class="tab-item" data-tab="movie">热门电影</div>
+                <div class="tab-item" data-tab="tv">热门电视剧</div>
+            </div>
+
+            <div class="hot-search-content">
+                <section id="content-all" class="content-pane active">
+                    <div class="loading">正在加载全网热搜...</div>
+                </section>
+                <section id="content-movie" class="content-pane">
+                    <div class="loading">正在加载热门电影...</div>
+                </section>
+                <section id="content-tv" class="content-pane">
+                    <div class="loading">正在加载热门电视剧...</div>
+                </section>
+            </div>
+            </div>
+            <div style="position:fixed; width:100vw; top:188vh; left:0; overflow:hidden;">
+                <h2>{city}{sitename}介绍：</h2>
+                <p style="text-indent:2em; line-height:2em;">搜索引擎存在的意义是为了能够搜索到自己需要的信息，但是现在的搜索引擎如你所见，能搜索到的东西越来越少，大部分的搜索引擎已经名存实亡，于是{city}{sitename}出现了，希望能够为搜索做点儿什么，让每一次搜索都能有所收获。</p>
+                <p style="text-indent:2em; line-height:2em;">搜索引擎是一种信息检索系统，设计用于查找存储在计算机系统中的信息，有助于最小化查找信息所需时间。最知名和常见的搜索引擎形式是网络搜索引擎，它是一种能够通过 Internet 接受用户的查询指令，并向用户提供符合其查询要求的信息资源网址的系统。它是一些在 Web 中主动搜索信息并将其自动索引的 Web 网站，其索引内容存储在可供检索的大型数据库中，建立索引和目录服务。</p>
+                <p style="text-indent:2em; line-height:2em;">{city}{sitename}排序（Ranking）：根据用户的查询，将最相关的结果优先呈现。排序算法如 PageRank 通过评估网页的链接数量和质量来计算网页的重要性，此外，TF（词频）等因素也会影响排序结果。</p>
+                <p style="text-indent:2em; line-height:2em;">用户在搜索框中输入关键词后，{city}{sitename}会执行查询解析，通过语义分析理解用户意图，并可能进行拼写纠错、关键词扩展或推荐。</p>
+                <p style="text-indent:2em; line-height:2em;">在索引中找到与查询最相关的文档，根据相关性和质量对结果进行排序，并以图文并茂的形式呈现。通常{city}{sitename}会在这些链接下提供一小段来自这些网页的摘要信息以帮助用户判断此网页是否含有自己需要的内容。</p>
+                <h2>{city}{sitename}特点：</h2>
+                <p style="text-indent:2em; line-height:2em;">{city}{sitename}的信息检索与知识获取：{city}{sitename}是连接用户与信息世界的桥梁，能够在海量的网页中精准定位，为用户呈现最相关的内容，帮助人们快速找到所需信息，极大地改变了我们获取知识和信息的方式。</p>
+                <p style="text-indent:2em; line-height:2em;">{city}{sitename}旨在促进全球信息共享：随着互联网技术的发展和普及，{city}{sitename}的覆盖范围逐渐扩大，人们可以通过{city}{sitename}轻松地获得来自世界各地的信息和观点，促进了各国之间的交流和合作，推动了人类社会的进步。</p>
+                <p style="text-indent:2em; line-height:2em;">{city}{sitename}的商业推广与营销价值：作为一种营销工具，{city}{sitename}能够帮助企业在网络上进行推广。通过优化搜索引擎排名，企业可以让自己的网站排名靠前，吸引更多的潜在客户，为企业提供了更多的商业机会。</p>
+                <p style="text-indent:2em; line-height:2em;">{city}{sitename}充分尊重个人隐私：在信息时代，个人隐私保护是一个极其重要的问题。{city}{sitename}为用户提供了隐私保护功能，例如浏览器隐私模式、身份验证等，帮助用户保持他们的私密信息不被泄露，维护了个人权利。</p>
+                <p style="text-indent:2em; line-height:2em;">{city}{sitename}正在改变思维方式与学习习惯：{city}{sitename}的出现改变了人们传统的思维方式，让人们的思维更加灵活和开放。在学习方面，它打破了时间和空间的限制，鼓励自主学习和探索式学习，让人们在主动寻找答案的过程中不断成长和进步。</p>
+                <div>{innews}</div>
+                <div>{inreso}</div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <div class="city-links">
+                <b>城市分站：</b>
+                {citylist}
+            </div>
+            
+            <div class="copyright">
+                <p>Copyright © 2023 {city}{sitename}(<a href="//{siteurl}" rel="index">{siteurl}</a>) 版权所有 | <a href="{mulu}sitemap.xml">网站地图</a> | <a href="{mulu}sitemap.txt">Sitemap</a></p>
+                <p>{inlink}</p>
+            </div>
+        </footer>
+    </div>
+<script src="{mulu}skin/main.js"></script>
+</body>
+</html>
