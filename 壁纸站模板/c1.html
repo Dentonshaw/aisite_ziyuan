@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>【{keys}】搜索结果_{IP} - {sitename}</title>
+<meta name="description" content="您的IP：{IP}正在搜索【{keys}】，{sitename}根据关键词【{keys}】提供全网内容检索服务，所有【{keys}】相关的影视作品、网页、图片、商品等均来自互联网公开内容。" />
+<meta name="keywords" content="{keys}" />
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.top-search-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6rem;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.45);
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 800px;
+    gap: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.switch-btn {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px 0 0 6px;
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+    min-width: 72px;
+    text-align: center;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 110px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 0 0 6px 6px;
+    z-index: 10000;
+    list-style: none;
+}
+
+.dropdown-menu li {
+    padding: 10px 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown.show .dropdown-menu {
+    display: block;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    outline: none;
+    height: 46px;
+    min-width: 110px;
+}
+
+.search-input:focus {
+    border-color: #409eff;
+}
+
+.search-btn {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    background-color: #409eff;
+    color: white;
+    cursor: pointer;
+    min-width: 68px;
+}
+
+.search-btn:hover {
+    background-color: #338eef;
+}
+
+.main-object {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9998;
+    display: none;
+}
+        
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #409eff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body>
+
+<div class="top-search-bar">
+    <form class="search-form" id="searchForm">
+        <div class="dropdown">
+            <button type="button" class="switch-btn" id="switchBtn">⇵切换引擎</button>
+            <ul class="dropdown-menu">
+                <li data-type="video" data-url="{mulu}post/{关键词}.html" data-btn="搜索影片">影视搜索</li>
+                <li data-type="web" data-url="{mulu}post/{关键词}.html?type=web" data-btn="搜索网页">网页搜索</li>
+                <li data-type="pic" data-url="{mulu}post/{关键词}.html?type=pic" data-btn="搜索图片">图片搜索</li>
+                <li data-type="shop" data-url="{mulu}post/{关键词}.html?type=shop" data-btn="搜索商品">商品搜索</li>
+            </ul>
+        </div>
+        <input type="text" class="search-input" id="searchInput" placeholder="请输入要搜索的内容" autocomplete="off">
+        <button type="submit" class="search-btn" id="searchBtn">搜索影片</button>
+    </form>
+</div>
+
+<div class="loading" id="loading">
+    <div class="loader"></div>
+</div>
+
+<object class="main-object" id="mainIframe" type="text/html" referrerPolicy="no-referrer"></object>
+
+<script>
+    const switchBtn = document.getElementById('switchBtn');
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownItems = document.querySelectorAll('.dropdown-menu li');
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const mainIframe = document.getElementById('mainIframe');
+    const loading = document.getElementById('loading');
+
+    let currentSearchUrlTemplate = "{mulu}post/{关键词}.html";
+    
+    function getUrlParam(name) {
+        const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`);
+        const r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURIComponent(r[2]);
+        return '';
+    }
+
+    function getDefaultIframeUrl() {
+        const type = getUrlParam('type');
+        switch(type) {
+            case 'web':
+                return `https://so.appmiaoda.com/search?query={ukeys}`;
+            case 'pic':
+                return `https://so.appmiaoda.com/pic?query={ukeys}`;
+            case 'shop':
+                return `https://roldt.yhzu.cn/?r=/l&kw={ukeys}`;
+            case '':
+            case 'video':
+            default:
+                return `https://so.appmiaoda.com/video?url={ukeys}`;
+        }
+    }
+
+    window.onload = function () {
+        const defaultUrl = getDefaultIframeUrl();
+        loadUrl(defaultUrl);
+    };
+
+    switchBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        dropdown.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
+
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function () {
+            switchBtn.textContent = this.textContent;
+            searchBtn.textContent = this.dataset.btn;
+            currentSearchUrlTemplate = this.dataset.url;
+            dropdown.classList.remove('show');
+        });
+    });
+
+    searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const keyword = searchInput.value.trim();
+        if (!keyword) {
+            alert('请输入要搜索的内容');
+            return;
+        }
+        const fullUrl = currentSearchUrlTemplate.replace('{关键词}', encodeURIComponent(keyword));
+        window.location.href = fullUrl;
+    });
+
+    function loadUrl(url) {
+        loading.style.display = 'block';
+        mainIframe.onload = function () {
+            loading.style.display = 'none';
+        };
+        mainIframe.onerror = function () {
+            loading.style.display = 'none';
+        };
+        mainIframe.data = url;
+    }
+</script>
+</body>
+</html>
