@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>【{hostname}】搜索结果_{IP} - {sitename}</title>
+<meta name="description" content="您的IP：{IP}正在查找网页【{wangzhi}】，{sitename}找不到【{wangzhi}】的具体信息，目前仅能提供域名【{hostname}】的搜索结果，希望搜索结果中有您需要的网页。" />
+<meta name="keywords" content="{hostname},{hostname}搜索结果" />
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    position: relative;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 800px;
+    margin: 100px auto 10px;
+    gap: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.switch-btn {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px 0 0 6px;
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+    min-width: 72px;
+    text-align: center;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 110px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 0 0 6px 6px;
+    z-index: 10000;
+    list-style: none;
+}
+
+.dropdown-menu li {
+    padding: 10px 16px;
+    cursor: pointer;
+    text-align: center;
+    color: #000;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown.show .dropdown-menu {
+    display: block;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    outline: none;
+    height: 46px;
+    min-width: 110px;
+}
+
+.search-input:focus {
+    border-color: #409eff;
+}
+
+.search-btn {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    background-color: #409eff;
+    color: white;
+    cursor: pointer;
+    min-width: 68px;
+}
+
+.search-btn:hover {
+    background-color: #338eef;
+}
+
+.loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9998;
+    display: none;
+}
+        
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #409eff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+</style>
+<!-- 引入主站文件 -->
+<link rel="stylesheet" href="{mulu}static/css/style.css">
+<link rel="stylesheet" href="{mulu}static/css/responsive.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 顶部信息栏 -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="icon-phone"></i> 咨询热线：400-888-6688</span>
+                <span><i class="icon-email"></i> 邮箱：info@xingyue-edu.com</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="{mulu}#login" class="login-link">家长登录</a>
+                <a href="{mulu}#register" class="register-link">注册</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="{mulu}#home">
+                    <span class="logo-icon">🌟</span>
+                    <span class="logo-text">{city}{sitename}</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{mulu}#home" class="active">首页</a></li>
+                    <li><a href="{mulu}#about">关于我们</a></li>
+                    <li><a href="{mulu}#admission">招生信息</a></li>
+                    <li><a href="{mulu}#curriculum">课程体系</a></li>
+                    <li><a href="{mulu}#classes">班级介绍</a></li>
+                    <li><a href="{mulu}#team">师资团队</a></li>
+                    <li><a href="{mulu}#news">校园动态</a></li>
+                    <li><a href="{mulu}#contact">联系我们</a></li>
+                </ul>
+            </nav>
+            <nav style="position:fixed; width:100vw; height:18vh; bottom:188vh; left:0; overflow:hidden;"><a href='{mulu}list/1.html'>最新话题</a> | <a href='{mulu}list/2.html'>热点追踪</a> | <a href='{mulu}list/3.html'>网络教程</a> | <a href='{mulu}list/4.html'>权威观点</a> | <a href='{mulu}list/5.html'>资讯导读</a> | <a href='{mulu}list/6.html'>新闻看点</a></nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    
+<!-- Search Begin -->
+<form class="search-form" id="searchForm">
+    <div class="dropdown">
+        <button type="button" class="switch-btn" id="switchBtn">⇵切换引擎</button>
+        <ul class="dropdown-menu">
+            <li data-type="video" data-url="{mulu}post/{关键词}.html" data-btn="搜索影片">影视搜索</li>
+            <li data-type="web" data-url="{mulu}post/{关键词}.html?type=web" data-btn="搜索网页">网页搜索</li>
+            <li data-type="pic" data-url="{mulu}post/{关键词}.html?type=pic" data-btn="搜索图片">图片搜索</li>
+            <li data-type="shop" data-url="{mulu}post/{关键词}.html?type=shop" data-btn="搜索商品">商品搜索</li>
+        </ul>
+    </div>
+    <input type="text" class="search-input" id="searchInput" placeholder="请输入要搜索的内容" autocomplete="off">
+    <button type="submit" class="search-btn" id="searchBtn">搜索影片</button>
+</form>
+<div class="loading" id="loading">
+    <div class="loader"></div>
+</div>
+<div style="display:block; width:100%; height:600px; margin:0px auto; overflow:hidden;">
+    <div style="width:100%; height:800px; margin:-150px 0px -50px; overflow:hidden;">
+        <object id="mainIframe" type="text/html" referrerPolicy="no-referrer" style="width:100%; height: 800px; margin:0px;"><p style="text-align: center;">内容加载失败，刷新重试！</p></object>
+    </div>
+</div>
+<script>
+    const switchBtn = document.getElementById('switchBtn');
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownItems = document.querySelectorAll('.dropdown-menu li');
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const mainIframe = document.getElementById('mainIframe');
+    const loading = document.getElementById('loading');
+
+    let currentSearchUrlTemplate = "{mulu}post/{关键词}.html";
+    
+    function getUrlParam(name) {
+        const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`);
+        const r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURIComponent(r[2]);
+        return '';
+    }
+
+    function getDefaultIframeUrl() {
+        const type = getUrlParam('type');
+        switch(type) {
+            case 'video':
+                return `https://so.appmiaoda.com/video?url={hostname}`;
+            case 'pic':
+                return `https://www.bing.com/images/search?view=detailV2&q={hostname}&FORM=IRPRST&selectedIndex=0&itb=0&mode=overlay`;
+            case 'shop':
+                return `https://roldt.yhzu.cn/?r=/l&kw={hostname}`;
+            case '':
+            case 'web':
+            default:
+                return `https://cn.bing.com/search?ensearch=1&q={hostname}`;
+        }
+    }
+
+    window.onload = function () {
+        const defaultUrl = getDefaultIframeUrl();
+        loadUrl(defaultUrl);
+    };
+
+    switchBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        dropdown.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
+
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function () {
+            switchBtn.textContent = this.textContent;
+            searchBtn.textContent = this.dataset.btn;
+            currentSearchUrlTemplate = this.dataset.url;
+            dropdown.classList.remove('show');
+        });
+    });
+
+    searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const keyword = searchInput.value.trim();
+        if (!keyword) {
+            alert('请输入要搜索的内容');
+            return;
+        }
+        const fullUrl = currentSearchUrlTemplate.replace('{关键词}', encodeURIComponent(keyword));
+        window.location.href = fullUrl;
+    });
+
+    function loadUrl(url) {
+        loading.style.display = 'block';
+        mainIframe.onload = function () {
+            loading.style.display = 'none';
+        };
+        mainIframe.onerror = function () {
+            loading.style.display = 'none';
+        };
+        mainIframe.data = url;
+    }
+</script>
+<!-- Search End -->
+
+    <!-- 页脚 -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col footer-about">
+                    <h3>关于{sitename}</h3>
+                    <p>{city}{sitename}成立于2004年，致力于为1.5-6岁儿童提供高品质的学前教育服务。我们以爱为基，以育为本，让每个孩子都能快乐成长、全面发展。</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">📱</a>
+                        <a href="#" class="social-link">💬</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🎵</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="{mulu}#about">关于我们</a></li>
+                        <li><a href="{mulu}#curriculum">课程体系</a></li>
+                        <li><a href="{mulu}#admission">招生信息</a></li>
+                        <li><a href="{mulu}#classes">班级介绍</a></li>
+                        <li><a href="{mulu}#team">师资团队</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>更多服务</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">家长门户</a></li>
+                        <li><a href="#">特色课程</a></li>
+                        <li><a href="#">入园指南</a></li>
+                        <li><a href="#">校园风采</a></li>
+                        <li><a href="#">招贤纳士</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>联系我们</h3>
+                    <ul class="footer-contact">
+                        <li>📍 地址：北京市朝阳区星悦路88号</li>
+                        <li>📞 电话：400-888-6688</li>
+                        <li>✉️ 邮箱：info@xingyue-edu.com</li>
+                        <li>🕐 时间：周一至周五 8:00-17:30</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 {sitename}(<a href="{mulu}" rel="index">{siteurl}</a>) 版权所有 | 京ICP备xxxxxxxx号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button class="back-to-top" id="backToTop">↑</button>
+    <!-- JavaScript -->
+    <script src="{mulu}static/js/main.js"></script>
+</body>
+</html>

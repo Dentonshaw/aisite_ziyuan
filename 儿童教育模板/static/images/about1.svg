@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="campus-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8E6F0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="campus-building" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD93D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F6AD55;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Sky -->
+  <rect width="800" height="400" fill="url(#campus-sky)"/>
+  <!-- Sun -->
+  <circle cx="700" cy="80" r="50" fill="#FFD700" opacity="0.8"/>
+  <!-- Clouds -->
+  <ellipse cx="150" cy="80" rx="40" ry="20" fill="white" opacity="0.7"/>
+  <ellipse cx="180" cy="75" rx="30" ry="15" fill="white" opacity="0.7"/>
+  <ellipse cx="500" cy="60" rx="35" ry="18" fill="white" opacity="0.6"/>
+  <!-- Ground -->
+  <rect y="400" width="800" height="200" fill="#7ECE72"/>
+  <!-- Main Building -->
+  <rect x="200" y="200" width="400" height="250" rx="10" fill="url(#campus-building)"/>
+  <!-- Roof -->
+  <polygon points="180,200 400,120 620,200" fill="#E53E3E"/>
+  <!-- Windows -->
+  <rect x="230" y="240" width="50" height="60" rx="3" fill="#87CEEB" opacity="0.8"/>
+  <rect x="310" y="240" width="50" height="60" rx="3" fill="#87CEEB" opacity="0.8"/>
+  <rect x="390" y="240" width="50" height="60" rx="3" fill="#87CEEB" opacity="0.8"/>
+  <rect x="470" y="240" width="50" height="60" rx="3" fill="#87CEEB" opacity="0.8"/>
+  <rect x="230" y="330" width="50" height="60" rx="3" fill="#87CEEB" opacity="0.8"/>
+  <rect x="310" y="330" width="50" height="60" rx="3" fill="#87CEEB" opacity="0.8"/>
+  <rect x="390" y="330" width="50" height="60" rx="3" fill="#87CEEB" opacity="0.8"/>
+  <rect x="470" y="330" width="50" height="60" rx="3" fill="#87CEEB" opacity="0.8"/>
+  <!-- Door -->
+  <rect x="370" y="350" width="60" height="100" rx="30" fill="#8B4513"/>
+  <!-- Flag -->
+  <line x1="400" y1="120" x2="400" y2="70" stroke="#333" stroke-width="3"/>
+  <polygon points="400,70 440,85 400,100" fill="#E53E3E"/>
+  <!-- Side building -->
+  <rect x="620" y="280" width="120" height="170" rx="8" fill="#4ECDC4"/>
+  <rect x="640" y="310" width="30" height="40" rx="2" fill="#87CEEB" opacity="0.8"/>
+  <rect x="690" y="310" width="30" height="40" rx="2" fill="#87CEEB" opacity="0.8"/>
+  <!-- Trees -->
+  <rect x="100" y="320" width="12" height="80" fill="#8B4513"/>
+  <circle cx="106" cy="300" r="35" fill="#228B22"/>
+  <rect x="50" y="350" width="10" height="60" fill="#8B4513"/>
+  <circle cx="55" cy="335" r="28" fill="#32CD32"/>
+  <!-- Path -->
+  <path d="M 350 450 Q 400 480 450 450" stroke="#DEB887" stroke-width="8" fill="none"/>
+  <!-- Flowers -->
+  <circle cx="300" cy="440" r="5" fill="#FF69B4"/>
+  <circle cx="350" cy="450" r="5" fill="#FFD700"/>
+  <circle cx="500" cy="440" r="5" fill="#FF69B4"/>
+  <circle cx="550" cy="460" r="5" fill="#9370DB"/>
+</svg>

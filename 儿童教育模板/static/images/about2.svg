@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="class-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5DEB3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DEB887;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Wall -->
+  <rect width="600" height="350" fill="url(#class-bg)"/>
+  <!-- Whiteboard -->
+  <rect x="100" y="50" width="400" height="150" rx="8" fill="#2d5a27"/>
+  <text x="300" y="100" text-anchor="middle" font-size="24" fill="white" font-family="sans-serif">我爱学习</text>
+  <text x="300" y="140" text-anchor="middle" font-size="20" fill="#FFD700" font-family="sans-serif">A B C D</text>
+  <!-- Drawings on board -->
+  <circle cx="140" cy="160" r="10" fill="red" opacity="0.7"/>
+  <rect x="160" y="150" width="20" height="20" fill="blue" opacity="0.7"/>
+  <polygon points="200,170 215,145 230,170" fill="green" opacity="0.7"/>
+  <!-- Teacher -->
+  <circle cx="300" cy="280" r="20" fill="#FFDAB9"/>
+  <rect x="278" y="300" width="44" height="65" rx="8" fill="#3B82F6"/>
+  <line x1="288" y1="365" x2="283" y2="395" stroke="#FFDAB9" stroke-width="5"/>
+  <line x1="312" y1="365" x2="317" y2="395" stroke="#FFDAB9" stroke-width="5"/>
+  <!-- Teacher arms -->
+  <line x1="322" y1="320" x2="360" y2="300" stroke="#FFDAB9" stroke-width="4"/>
+  <!-- Book in hand -->
+  <rect x="350" y="290" width="25" height="20" rx="2" fill="#FF6B6B"/>
+  <!-- Children sitting -->
+  <circle cx="150" cy="370" r="14" fill="#FFDAB9"/>
+  <rect x="137" y="384" width="26" height="40" rx="6" fill="#FF6B6B"/>
+  <circle cx="200" cy="375" r="13" fill="#FFDAB9"/>
+  <rect x="188" y="388" width="24" height="38" rx="6" fill="#4ECDC4"/>
+  <circle cx="400" cy="372" r="14" fill="#FFDAB9"/>
+  <rect x="387" y="386" width="26" height="40" rx="6" fill="#FFD93D"/>
+  <circle cx="450" cy="368" r="13" fill="#FFDAB9"/>
+  <rect x="438" y="381" width="24" height="38" rx="6" fill="#A855F7"/>
+  <!-- Floor -->
+  <rect y="350" width="600" height="100" fill="#DEB887"/>
+  <!-- Rug -->
+  <ellipse cx="300" cy="400" rx="200" ry="25" fill="#FF6B6B" opacity="0.3"/>
+  <!-- Decorations -->
+  <text x="80" y="80" font-size="30" opacity="0.4">⭐</text>
+  <text x="500" y="90" font-size="25" opacity="0.4">📚</text>
+</svg>

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grass3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38f9d7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Sky -->
+  <rect width="1920" height="600" fill="url(#sky3)"/>
+  <!-- Sun -->
+  <circle cx="300" cy="150" r="70" fill="#FFD700" opacity="0.9"/>
+  <!-- Clouds -->
+  <ellipse cx="800" cy="120" rx="70" ry="35" fill="white" opacity="0.8"/>
+  <ellipse cx="860" cy="110" rx="55" ry="28" fill="white" opacity="0.8"/>
+  <ellipse cx="740" cy="115" rx="50" ry="25" fill="white" opacity="0.8"/>
+  <ellipse cx="1400" cy="180" rx="60" ry="30" fill="white" opacity="0.7"/>
+  <ellipse cx="1450" cy="170" rx="45" ry="22" fill="white" opacity="0.7"/>
+  <!-- Grass -->
+  <rect y="600" width="1920" height="480" fill="url(#grass3)"/>
+  <!-- Trees background -->
+  <rect x="100" y="350" width="15" height="250" fill="#8B4513"/>
+  <circle cx="107" cy="330" r="60" fill="#228B22" opacity="0.8"/>
+  <rect x="300" y="380" width="15" height="220" fill="#8B4513"/>
+  <circle cx="307" cy="360" r="55" fill="#228B22" opacity="0.8"/>
+  <rect x="1600" y="340" width="15" height="260" fill="#8B4513"/>
+  <circle cx="1607" cy="320" r="58" fill="#228B22" opacity="0.8"/>
+  <rect x="1800" y="370" width="15" height="230" fill="#8B4513"/>
+  <circle cx="1807" cy="350" r="52" fill="#228B22" opacity="0.8"/>
+  <!-- Playground Slide -->
+  <rect x="500" y="400" width="15" height="250" fill="#FF6B6B"/>
+  <polygon points="450,650 600,650 570,450" fill="#FF8E8E"/>
+  <rect x="440" y="640" width="170" height="20" rx="5" fill="#FF6B6B"/>
+  <!-- Swings -->
+  <line x1="700" y1="400" x2="700" y2="550" stroke="#333" stroke-width="4"/>
+  <line x1="780" y1="400" x2="780" y2="550" stroke="#333" stroke-width="4"/>
+  <line x1="700" y1="550" x2="730" y2="580" stroke="#333" stroke-width="3"/>
+  <line x1="780" y1="550" x2="750" y2="580" stroke="#333" stroke-width="3"/>
+  <rect x="715" y="580" width="40" height="8" rx="4" fill="#4ECDC4"/>
+  <!-- Second swing -->
+  <line x1="850" y1="400" x2="850" y2="530" stroke="#333" stroke-width="4"/>
+  <line x1="930" y1="400" x2="930" y2="530" stroke="#333" stroke-width="4"/>
+  <line x1="850" y1="530" x2="880" y2="560" stroke="#333" stroke-width="3"/>
+  <line x1="930" y1="530" x2="900" y2="560" stroke="#333" stroke-width="3"/>
+  <rect x="865" y="560" width="40" height="8" rx="4" fill="#FFD93D"/>
+  <!-- Sandbox -->
+  <ellipse cx="1100" cy="680" rx="120" ry="30" fill="#F4D03F"/>
+  <circle cx="1050" cy="675" r="8" fill="#E74C3C"/>
+  <circle cx="1120" cy="670" r="8" fill="#3498DB"/>
+  <circle cx="1080" cy="685" r="8" fill="#2ECC71"/>
+  <!-- Seesaw -->
+  <line x1="1300" y1="600" x2="1500" y2="600" stroke="#FF6B6B" stroke-width="8"/>
+  <line x1="1400" y1="600" x2="1400" y2="680" stroke="#333" stroke-width="5"/>
+  <circle cx="1310" cy="585" r="15" fill="#4ECDC4"/>
+  <circle cx="1490" cy="585" r="15" fill="#FFD93D"/>
+  <!-- Children playing -->
+  <!-- Running child -->
+  <circle cx="400" cy="700" r="18" fill="#FFDAB9"/>
+  <rect x="385" y="718" width="30" height="45" rx="8" fill="#FF6B6B"/>
+  <line x1="390" y1="763" x2="380" y2="790" stroke="#FFDAB9" stroke-width="5"/>
+  <line x1="410" y1="763" x2="420" y2="790" stroke="#FFDAB9" stroke-width="5"/>
+  <line x1="385" y1="730" x2="365" y2="710" stroke="#FFDAB9" stroke-width="4"/>
+  <line x1="415" y1="730" x2="435" y2="710" stroke="#FFDAB9" stroke-width="4"/>
+  <!-- Child on slide -->
+  <circle cx="555" cy="600" r="16" fill="#FFDAB9"/>
+  <rect x="542" y="616" width="26" height="40" rx="8" fill="#4ECDC4"/>
+  <!-- Child on swing -->
+  <circle cx="730" cy="610" r="16" fill="#FFDAB9"/>
+  <rect x="717" y="626" width="26" height="38" rx="8" fill="#FFD93D"/>
+  <!-- Child with ball -->
+  <circle cx="950" cy="720" r="17" fill="#FFDAB9"/>
+  <rect x="936" y="737" width="28" height="42" rx="8" fill="#A855F7"/>
+  <circle cx="900" cy="740" r="20" fill="#FF6B6B"/>
+  <!-- Flowers -->
+  <circle cx="200" cy="650" r="6" fill="#FF69B4"/>
+  <circle cx="250" cy="660" r="6" fill="#FFD700"/>
+  <circle cx="1900" cy="650" r="6" fill="#9370DB"/>
+  <circle cx="1850" cy="670" r="6" fill="#FF69B4"/>
+  <!-- Butterflies -->
+  <ellipse cx="600" cy="300" rx="8" ry="5" fill="#FF69B4" opacity="0.7" transform="rotate(20 600 300)"/>
+  <ellipse cx="1000" cy="250" rx="8" ry="5" fill="#9370DB" opacity="0.7" transform="rotate(-15 1000 250)"/>
+  <ellipse cx="1500" cy="350" rx="8" ry="5" fill="#FFD700" opacity="0.7" transform="rotate(30 1500 350)"/>
+</svg>

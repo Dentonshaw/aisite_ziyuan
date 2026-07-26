@@ -1,0 +1,424 @@
+/* ========================================
+   响应式样式 - 适配各种屏幕尺寸
+   ======================================== */
+
+/* ===== Large Screens (1200px+) ===== */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+/* ===== Medium Screens (992px - 1199px) ===== */
+@media (max-width: 1199px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .hero-content h2 {
+        font-size: 24px;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .features-grid {
+        gap: 25px;
+    }
+
+    .feature-card {
+        padding: 35px 25px;
+    }
+
+    .about-stats {
+        gap: 15px;
+    }
+
+    .stat-number {
+        font-size: 30px;
+    }
+}
+
+/* ===== Tablet (768px - 991px) ===== */
+@media (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+
+    /* Top Bar */
+    .top-bar {
+        display: none;
+    }
+
+    .header {
+        top: 0;
+    }
+
+    /* Hero */
+    .hero-section {
+        margin-top: 70px;
+        min-height: 600px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content h2 {
+        font-size: 20px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    /* Features */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* About */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-images {
+        order: -1;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Curriculum */
+    .curriculum-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Admission */
+    .admission-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .admission-section .section-header {
+        text-align: center;
+    }
+
+    .admission-section .section-desc {
+        margin: 0 auto 30px;
+    }
+
+    .contact-phone {
+        justify-content: center;
+    }
+
+    /* Classes */
+    .classes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Why Choose */
+    .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Team */
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* News */
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-card {
+        flex-direction: column;
+    }
+
+    .news-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+    }
+}
+
+/* ===== Mobile (576px - 767px) ===== */
+@media (max-width: 767px) {
+    .container {
+        max-width: 540px;
+        padding: 0 15px;
+    }
+
+    /* Header */
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        box-shadow: var(--shadow-md);
+        padding: 20px;
+    }
+
+    .main-nav.active {
+        display: block;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .main-nav a {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    /* Hero */
+    .hero-section {
+        min-height: 500px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content h2 {
+        font-size: 18px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+    .hero-content .btn {
+        margin: 5px;
+        padding: 12px 28px;
+        font-size: 15px;
+    }
+
+    /* Features */
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .feature-card {
+        padding: 30px 20px;
+    }
+
+    /* Section Header */
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .section-desc {
+        font-size: 15px;
+    }
+
+    /* About */
+    .about-section,
+    .curriculum-section,
+    .admission-section,
+    .classes-section,
+    .why-choose-section,
+    .team-section,
+    .news-section,
+    .testimonials-section {
+        padding: 60px 0;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .about-img-sub {
+        display: none;
+    }
+
+    .about-badge {
+        top: 15px;
+        left: 15px;
+        padding: 15px 20px;
+    }
+
+    /* Curriculum */
+    .curriculum-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .curriculum-card {
+        padding: 30px 20px;
+    }
+
+    /* Admission Form */
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .admission-form-wrapper {
+        padding: 25px 20px;
+    }
+
+    /* Classes */
+    .classes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .class-card {
+        padding: 25px 20px;
+    }
+
+    /* Why Choose */
+    .why-choose-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Team */
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .team-card {
+        padding: 25px 15px;
+    }
+
+    .team-photo {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Testimonials */
+    .testimonial-card {
+        padding: 30px 20px;
+    }
+
+    .testimonial-text {
+        font-size: 16px;
+    }
+
+    /* Subscribe */
+    .subscribe-form {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .subscribe-form .btn {
+        width: 100%;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-col h3 {
+        font-size: 16px;
+    }
+
+    /* Back to Top */
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+}
+
+/* ===== Small Mobile (320px - 575px) ===== */
+@media (max-width: 575px) {
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content .btn {
+        display: block;
+        margin: 10px auto;
+        max-width: 200px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-number {
+        font-size: 26px;
+    }
+
+    .stat-label {
+        font-size: 12px;
+    }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    .header,
+    .top-bar,
+    .hero-section,
+    .back-to-top,
+    .subscribe-section,
+    .footer {
+        display: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===== High Contrast Mode ===== */
+@media (prefers-contrast: high) {
+    :root {
+        --text-gray: #000;
+        --text-light: #333;
+    }
+}
